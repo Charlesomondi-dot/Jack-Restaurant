@@ -154,8 +154,8 @@ h1, h2, h3, h4 {
 .hero__image {
   min-height: clamp(280px, 50vw, 420px);
   border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(216,123,66,0.5), rgba(15,13,11,0.6)), url('https://images.unsplash.com/photo-1559050019-6b509a68e480?auto=format&fit=crop&w=1400&q=80') center/cover;
-  background-attachment: fixed;
+  background: linear-gradient(180deg, rgba(216,123,66,0.45), rgba(15,13,11,0.7)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80') center/cover;
+  background-color: #1a120b;
   box-shadow: var(--shadow);
 }
 
@@ -476,7 +476,6 @@ input:focus {
 }
 
 @media (orientation: landscape) and (max-height: 600px) {
-  .hero__image { display: none; }
   .hero { gap: 16px; padding: 24px 16px; }
 }
 

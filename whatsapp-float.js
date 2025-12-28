@@ -1,8 +1,8 @@
 (function() {
-  const number = '254719501832';
+  const number = '254796978358';
   const defaultMessage = "Hi Jack's Hearth Kitchen!\n\nName: \nOrder: \nEmail: \nNumber of guests: ";
   const encoded = encodeURIComponent(defaultMessage);
-  const href = `https://wa.me/${number}?text=${encoded}`;
+  const href = `https://api.whatsapp.com/send?phone=${number}&text=${encoded}`;
 
   function ensureButton() {
     if (document.querySelector('.floating-whatsapp')) return;

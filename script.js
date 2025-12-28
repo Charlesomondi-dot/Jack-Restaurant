@@ -3,6 +3,7 @@ const navLinks = document.querySelector('.nav-links');
 const yearEl = document.getElementById('year');
 const form = document.querySelector('.reservation__form');
 const formMessage = document.querySelector('.form-message');
+const WHATSAPP_NUMBER = '254796978358';
 const slides = Array.from(document.querySelectorAll('.slide'));
 const sliderTrack = document.querySelector('.slider__track');
 const prevBtn = document.querySelector('.slider__control.prev');
@@ -91,7 +92,25 @@ if (form && formMessage) {
       return;
     }
 
-    formMessage.textContent = 'Reservation received. We will confirm shortly by phone or email.';
+    // Compose WhatsApp reservation message
+    const msgLines = [
+      "Reservation Request - Jack's Hearth Kitchen",
+      '',
+      `Name: ${formData.name}`,
+      `Phone: ${formData.phone || 'N/A'}`,
+      `Email: ${formData.email || 'N/A'}`,
+      `Date: ${formData.date}`,
+      `Time: ${formData.time}`,
+      `Guests: ${formData.guests}`,
+      `Notes: ${formData.notes || 'N/A'}`
+    ];
+    const message = msgLines.join('\n');
+    const encoded = encodeURIComponent(message);
+    const waUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encoded}`;
+
+    // Open WhatsApp with prefilled message
+    window.open(waUrl, '_blank');
+    formMessage.textContent = 'Opening WhatsApp… If it does not open, ensure WhatsApp is installed and the number is active.';
     formMessage.style.color = '#7be0a3';
     form.reset();
   });
