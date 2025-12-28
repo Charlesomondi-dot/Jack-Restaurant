@@ -320,8 +320,9 @@
   <script src="script.js?v=20251228"></script>
   <script src="whatsapp-float.js?v=20251228" defer></script>
   <script>
-    // Register Service Worker for offline support and fast loading
-    if ('serviceWorker' in navigator) {
+    // Register Service Worker only in production (avoid dev caching)
+    const isLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+    if (!isLocal && 'serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').then(reg => {
         console.log('Service Worker registered for offline support');
       }).catch(err => {

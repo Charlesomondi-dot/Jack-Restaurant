@@ -24,7 +24,9 @@ Professional, production-ready restaurant website built with HTML, CSS, and vani
 
 ```bash
 npm install
-npm start
+npm run dev   # fast hot reload (BrowserSync)
+# or
+npm start     # Express server (production-like)
 ```
 
 Visit `http://localhost:3000` in your browser.
