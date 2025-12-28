@@ -1,0 +1,36 @@
+{
+  "name": "Jack's Hearth Kitchen",
+  "short_name": "Jack's Hearth",
+  "description": "Wood-fired steaks, coastal seafood, and craft cocktails in Bondo, Siaya County",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f0d0b",
+  "theme_color": "#d87b42",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 192 192%22><rect fill=%22%230f0d0b%22 width=%22192%22 height=%22192%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22120%22 font-family=%22system-ui%22>🔥</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22><rect fill=%22%230f0d0b%22 width=%22512%22 height=%22512%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22320%22 font-family=%22system-ui%22>🔥</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 540 720%22><rect fill=%22%230f0d0b%22 width=%22540%22 height=%22720%22/><text x=%2270%25%22 y=%2250%25%22 fill=%22%23d87b42%22 font-size=%2248%22 font-weight=%22bold%22 font-family=%22serif%22>Jack's Hearth Kitchen</text></svg>",
+      "sizes": "540x720",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["food", "restaurant"],
+  "screenshots_info": "High-quality restaurant dining experience",
+  "prefer_related_applications": false
+}

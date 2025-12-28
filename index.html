@@ -4,11 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Jack's Hearth Kitchen in Bondo, Siaya County. Wood-fired steaks, coastal-inspired seafood, and craft cocktails. Book your table tonight." />
+  <meta name="theme-color" content="#d87b42" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>Jack's Hearth Kitchen | Modern Texas Dining</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://maps.google.com">
+  <link rel="preload" href="style.css" as="style">
+  <link rel="preload" href="script.js" as="script">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
 </head>
 <body>
   <header class="site-header" id="top">
@@ -236,5 +244,15 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // Register Service Worker for offline support and fast loading
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(reg => {
+        console.log('Service Worker registered for offline support');
+      }).catch(err => {
+        console.log('Service Worker registration failed:', err);
+      });
+    }
+  </script>
 </body>
 </html>
