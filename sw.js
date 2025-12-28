@@ -1,4 +1,4 @@
-const CACHE_NAME = 'jack-restaurant-v1';
+const CACHE_NAME = 'jack-restaurant-v2';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -43,30 +43,28 @@ self.addEventListener('fetch', event => {
     return;
   }
 
+  const urlNoQuery = new URL(event.request.url);
+  urlNoQuery.search = '';
+  const strippedRequest = new Request(urlNoQuery.toString(), { method: 'GET' });
+
   event.respondWith(
     caches.match(event.request).then(response => {
-      // Return cached version if available
-      if (response) {
-        return response;
-      }
+      if (response) return response;
 
-      return fetch(event.request).then(response => {
-        // Don't cache non-successful responses
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
-        }
+      // Try cache without query string (handles ?v= cache-busting)
+      return caches.match(strippedRequest).then(resp2 => {
+        if (resp2) return resp2;
 
-        // Clone and cache successful responses
-        const responseToCache = response.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, responseToCache);
-        });
-
-        return response;
-      }).catch(() => {
-        // Offline fallback
-        console.log('Service Worker: Network request failed, using cache');
-        return caches.match('/index.html');
+        return fetch(event.request).then(networkResp => {
+          if (!networkResp || networkResp.status !== 200 || networkResp.type !== 'basic') {
+            return networkResp;
+          }
+          const respToCache = networkResp.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, respToCache);
+          });
+          return networkResp;
+        }).catch(() => caches.match('/index.html'));
       });
     })
   );

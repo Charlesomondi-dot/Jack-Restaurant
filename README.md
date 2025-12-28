@@ -124,6 +124,28 @@ For issues or questions, contact: `okalc9939@gmail.com`
 
 **Ready to launch?** Your website is now configured for production deployment on Render.com. Push to GitHub and deploy in minutes!
 
+## Not seeing changes on Render?
+If your live site doesn’t reflect edits:
+
+1) Make sure code is deployed
+- Commit and push to the branch Render is watching (usually `main`).
+- In Render dashboard → your service → click "Manual Deploy" → "Clear build cache & deploy".
+
+2) Hard refresh the browser
+- Desktop: Ctrl+F5 (Windows) or Cmd+Shift+R (Mac).
+- Mobile: close tab, clear site data, reopen.
+
+3) Clear/update Service Worker cache
+- DevTools → Application → Service Workers → Unregister.
+- DevTools → Application → Clear storage → Clear site data.
+- Reload the page.
+
+4) Asset cache-busting
+- We append `?v=YYYYMMDD` to CSS/JS in `index.html`.
+- Server sends short cache headers; new deploys should appear within minutes.
+
+If issues continue, confirm your Render service points to the correct repo/branch and that auto-deploys are enabled.
+
 ## SEO Notes
 
 The site includes SEO best practices:

@@ -22,9 +22,9 @@ app.use((req, res, next) => {
   else if (req.url.endsWith('.html') || req.url === '/') {
     res.set('Cache-Control', 'public, max-age=3600, must-revalidate');
   }
-  // CSS & JS - long cache with versioning
+  // CSS & JS - shorter cache; we use ?v= for busting
   else if (req.url.endsWith('.css') || req.url.endsWith('.js')) {
-    res.set('Cache-Control', 'public, max-age=31536000, immutable');
+    res.set('Cache-Control', 'public, max-age=3600, must-revalidate');
   }
   // Images - cache for a week
   else if (/\.(jpg|jpeg|png|gif|svg|webp)$/i.test(req.url)) {
