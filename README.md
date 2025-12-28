@@ -123,3 +123,20 @@ For issues or questions, contact: `okalc9939@gmail.com`
 ---
 
 **Ready to launch?** Your website is now configured for production deployment on Render.com. Push to GitHub and deploy in minutes!
+
+## SEO Notes
+
+The site includes SEO best practices:
+- Open Graph & Twitter meta tags for rich sharing
+- JSON-LD Restaurant schema with address, hours, and reservation action
+- robots.txt and sitemap.xml for crawler discovery
+
+After you know your final production domain, update the placeholder `https://your-production-domain.example/` in:
+- [index.html](index.html): canonical link, `og:url`, JSON-LD `url` and `menu`
+- [sitemap.xml](sitemap.xml): `<loc>` entry
+- [robots.txt](robots.txt): `Sitemap:` absolute URL (optional)
+
+Optional improvements:
+- Replace `og:image` with a high-quality image hosted on your domain
+- Add real social profile URLs in JSON-LD `sameAs`
+- Verify property in Google Search Console and submit sitemap

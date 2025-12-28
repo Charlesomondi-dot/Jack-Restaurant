@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#d87b42" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>Jack's Hearth Kitchen | Modern Texas Dining</title>
+  <title>Jack's Hearth Kitchen | Wood‑Fired Dining in Bondo, Siaya County</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://maps.google.com">
@@ -17,6 +17,73 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+  <!-- SEO: Canonical & Robots -->
+  <!-- TODO: Update href to your final production domain -->
+  <link rel="canonical" href="https://your-production-domain.example/" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="restaurant" />
+  <meta property="og:site_name" content="Jack's Hearth Kitchen" />
+  <meta property="og:locale" content="en_KE" />
+  <meta property="og:title" content="Jack's Hearth Kitchen | Wood‑Fired Dining in Bondo, Siaya County" />
+  <meta property="og:description" content="Wood-fired steaks, coastal-inspired seafood, and craft cocktails in Bondo, Siaya County. Reserve your table or order on WhatsApp." />
+  <meta property="og:url" content="https://your-production-domain.example/" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=1200&q=80" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jack's Hearth Kitchen | Wood‑Fired Dining in Bondo, Siaya County" />
+  <meta name="twitter:description" content="Wood-fired steaks, coastal seafood, and cocktails. Reserve now in Bondo, Siaya County." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=1200&q=80" />
+
+  <!-- Structured Data: Restaurant -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Jack's Hearth Kitchen",
+    "description": "Wood-fired steaks, coastal seafood, and craft cocktails in Bondo, Siaya County.",
+    "url": "https://your-production-domain.example/",
+    "telephone": "+254719501832",
+    "priceRange": "$$",
+    "servesCuisine": ["Kenyan", "Seafood", "Steakhouse", "Modern"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bondo",
+      "addressRegion": "Siaya County",
+      "addressCountry": "KE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -0.0946,
+      "longitude": 34.2445
+    },
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "16:00", "closes": "22:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "16:00", "closes": "23:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "11:00", "closes": "23:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "11:00", "closes": "21:00"}
+    ],
+    "acceptsReservations": "True",
+    "menu": "https://your-production-domain.example/#menu",
+    "sameAs": [
+      "https://wa.me/0719501832",
+      "https://maps.google.com/?q=Bondo+Siaya+County+Kenya"
+    ],
+    "potentialAction": {
+      "@type": "ReserveAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://wa.me/0719501832",
+        "inLanguage": "en-KE",
+        "actionPlatform": ["http://schema.org/DesktopWebPlatform","http://schema.org/MobileWebPlatform"]
+      }
+    }
+  }
+  </script>
 </head>
 <body>
   <header class="site-header" id="top">
@@ -238,11 +305,11 @@
     </section>
   </main>
 
-  <a href="https://wa.me/0719501832?text=Hi%20Jack%27s%20Hearth%20Kitchen%21%20I%27d%20like%20to%20place%20an%20order." class="floating-whatsapp" title="Order on WhatsApp" aria-label="WhatsApp order">
+  <a href="https://wa.me/0719501832?text=Hi%20Jack%27s%20Hearth%20Kitchen%21%20I%27d%20like%20to%20get%20started." class="floating-whatsapp" title="Get Started on WhatsApp" aria-label="Get Started on WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.993 1.271c-1.546.921-2.791 2.22-3.599 3.715-.81 1.494-1.172 3.127-.87 4.783.304 1.656 1.25 3.145 2.688 4.238 1.438 1.092 3.23 1.75 5.132 1.75h.005c1.902 0 3.694-.658 5.132-1.75 1.438-1.092 2.384-2.582 2.688-4.238.303-1.656-.06-3.289-.87-4.783-.808-1.495-2.053-2.794-3.599-3.715a9.87 9.87 0 00-4.992-1.271zm-9.256 11.993c-1.1-.771-2.047-1.76-2.709-2.948-.66-1.188-.953-2.531-.85-3.918.102-1.388.569-2.706 1.362-3.82.793-1.115 1.87-2.007 3.102-2.56 1.232-.554 2.6-.798 3.984-.71 1.385.087 2.715.515 3.83 1.246 1.115.731 2.007 1.81 2.56 3.04.554 1.231.798 2.6.71 3.984-.087 1.385-.515 2.715-1.246 3.83-.731 1.115-1.81 2.007-3.04 2.56-1.231.554-2.6.798-3.984.71-1.385-.087-2.715-.515-3.83-1.246M24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12z"/>
     </svg>
-    <span class="whatsapp-label">Order</span>
+    <span class="whatsapp-label">Get Started</span>
   </a>
 
   <footer class="footer">
@@ -251,6 +318,7 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="whatsapp-float.js" defer></script>
   <script>
     // Register Service Worker for offline support and fast loading
     if ('serviceWorker' in navigator) {
