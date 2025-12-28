@@ -120,6 +120,24 @@ main { display: flex; flex-direction: column; gap: 120px; padding-bottom: 120px;
   margin: 12px 0;
 }
 
+/* Prevent heading text overlap/wrapping issues on small screens */
+h1, h2, h3, h4 {
+  line-height: clamp(1.1, 2.5vw, 1.3);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* Tune highlight card heading for phones/tablets */
+.highlight-card h3 {
+  font-size: clamp(16px, 4.5vw, 24px);
+  line-height: 1.25;
+  margin: 0 0 6px;
+}
+.highlight-card p {
+  line-height: 1.5;
+}
+
 .hero__content .lede { max-width: 620px; color: var(--muted); }
 
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0 8px; }
