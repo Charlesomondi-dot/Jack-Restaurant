@@ -1,6 +1,6 @@
 (function() {
-  const number = '0719501832';
-  const defaultMessage = "Hi Jack's Hearth Kitchen! I'd like to get started.";
+  const number = '254719501832';
+  const defaultMessage = "Hi Jack's Hearth Kitchen!\n\nName: \nOrder: \nEmail: \nNumber of guests: ";
   const encoded = encodeURIComponent(defaultMessage);
   const href = `https://wa.me/${number}?text=${encoded}`;
 
