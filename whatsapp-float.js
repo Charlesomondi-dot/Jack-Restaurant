@@ -1,5 +1,5 @@
 (function() {
-  const number = '254796978358';
+  const number = '254711136309';
   const defaultMessage = "Hi Jack's Hearth Kitchen!\n\nName: \nOrder: \nEmail: \nNumber of guests: ";
   const encoded = encodeURIComponent(defaultMessage);
   const href = `https://api.whatsapp.com/send?phone=${number}&text=${encoded}`;

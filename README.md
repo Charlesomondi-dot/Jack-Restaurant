@@ -69,8 +69,8 @@ To use a custom domain:
 
 ### Update Restaurant Details
 - **Business Name:** Edit `index.html` - update "Jack's Hearth Kitchen"
-- **Phone:** Edit phone number `071 950 1832` throughout
-- **Email:** Update to `okalc9939@gmail.com`
+- **Phone:** Edit phone number `071 113 6309` throughout
+- **Email:** Update to `edduroyalty@gmail.com`
 - **Address:** Bondo Town, Siaya County, Kenya
 - **Hours:** Modify opening hours in Contact section
 - **Menu Items:** Edit menu sections (Starters, Mains, Drinks, Desserts)
@@ -120,7 +120,7 @@ Replace Unsplash image URLs with your own:
 
 ## Support
 
-For issues or questions, contact: `okalc9939@gmail.com`
+For issues or questions, contact: `edduroyalty@gmail.com`
 
 ---
 
