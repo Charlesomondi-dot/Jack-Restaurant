@@ -544,6 +544,55 @@ input:focus {
 
 .menu-modal[hidden] { display: none; }
 
+.whatsapp-modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}
+
+.whatsapp-modal[hidden] { display: none; }
+
+.whatsapp-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+}
+
+.whatsapp-modal__card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  max-width: 420px;
+  width: calc(100% - 40px);
+  z-index: 1;
+  display: grid;
+  gap: 12px;
+}
+
+.whatsapp-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.whatsapp-modal__form {
+  display: grid;
+  gap: 12px;
+}
+
+.whatsapp-modal__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
 .menu-modal__backdrop {
   position: absolute;
   inset: 0;
@@ -599,18 +648,18 @@ input:focus {
   align-items: center;
   justify-content: center;
   color: white;
-  text-decoration: none;
+  border: none;
+  cursor: pointer;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
   z-index: 999;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  border: 2px solid transparent;
   animation: float 3s ease-in-out infinite;
+  padding: 0;
 }
 
 .floating-whatsapp:hover {
   transform: scale(1.15);
   box-shadow: 0 16px 45px rgba(37, 211, 102, 0.4);
-  border-color: #f5c08d;
 }
 
 .floating-whatsapp:active {
