@@ -1,4 +1,4 @@
-const CACHE_NAME = 'jack-restaurant-v7';
+const CACHE_NAME = 'jack-restaurant-v8';
 const urlsToCache = [
   '/',
   '/index.html',
