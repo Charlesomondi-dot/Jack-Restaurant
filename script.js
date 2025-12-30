@@ -3,12 +3,24 @@ const navLinks = document.querySelector('.nav-links');
 const yearEl = document.getElementById('year');
 const form = document.querySelector('.reservation__form');
 const formMessage = document.querySelector('.form-message');
+const payNowBtn = document.getElementById('pay-now');
 const WHATSAPP_NUMBER = '254796978358';
+const menuButtons = Array.from(document.querySelectorAll('.menu-pay'));
+const menuModal = document.getElementById('menu-modal');
+const menuModalTitle = document.getElementById('menu-modal-title');
+const menuModalDesc = document.querySelector('.menu-modal__desc');
+const menuModalPrice = document.querySelector('.menu-modal__price');
+const menuPayment = document.getElementById('menu-payment');
+const menuPayNow = document.getElementById('menu-pay-now');
+const menuViewMore = document.getElementById('menu-view-more');
+const menuCloseBtn = document.querySelector('.menu-modal__close');
+const menuBackdrop = document.querySelector('.menu-modal__backdrop');
 const slides = Array.from(document.querySelectorAll('.slide'));
 const sliderTrack = document.querySelector('.slider__track');
 const prevBtn = document.querySelector('.slider__control.prev');
 const nextBtn = document.querySelector('.slider__control.next');
 let currentSlide = 0;
+let currentMenuItem = null;
 
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
@@ -83,6 +95,7 @@ if (form && formMessage) {
       time: form.time.value,
       guests: form.guests.value,
       notes: form.notes.value,
+      payment: form.payment.value,
     };
 
     const errors = validateForm(formData);
@@ -102,6 +115,7 @@ if (form && formMessage) {
       `Date: ${formData.date}`,
       `Time: ${formData.time}`,
       `Guests: ${formData.guests}`,
+      `Payment: ${formData.payment || 'N/A'}`,
       `Notes: ${formData.notes || 'N/A'}`
     ];
     const message = msgLines.join('\n');
@@ -114,4 +128,114 @@ if (form && formMessage) {
     formMessage.style.color = '#7be0a3';
     form.reset();
   });
+
+  if (payNowBtn) {
+    payNowBtn.addEventListener('click', event => {
+      event.preventDefault();
+      formMessage.textContent = '';
+
+      const formData = {
+        name: form.name.value,
+        phone: form.phone.value,
+        email: form.email.value,
+        date: form.date.value,
+        time: form.time.value,
+        guests: form.guests.value,
+        notes: form.notes.value,
+        payment: form.payment.value,
+      };
+
+      const errors = validateForm(formData);
+      if (errors.length) {
+        formMessage.textContent = errors[0];
+        formMessage.style.color = '#f5c08d';
+        return;
+      }
+
+      const payLines = [
+        "Payment Request - Jack's Hearth Kitchen",
+        '',
+        `Name: ${formData.name}`,
+        `Phone: ${formData.phone || 'N/A'}`,
+        `Email: ${formData.email || 'N/A'}`,
+        `Date: ${formData.date}`,
+        `Time: ${formData.time}`,
+        `Guests: ${formData.guests}`,
+        `Payment: ${formData.payment || 'N/A'}`,
+        `Notes: ${formData.notes || 'N/A'}`,
+        '',
+        'Please send a payment link or M-Pesa STK push to confirm.'
+      ];
+      const message = payLines.join('\n');
+      const encoded = encodeURIComponent(message);
+      const waUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encoded}`;
+
+      window.open(waUrl, '_blank');
+      formMessage.textContent = 'Opening WhatsApp to request payment…';
+      formMessage.style.color = '#7be0a3';
+    });
+  }
 }
+
+function openMenuModal(item) {
+  if (!menuModal) return;
+  currentMenuItem = item;
+  menuModalTitle.textContent = item.name;
+  menuModalDesc.textContent = item.desc;
+  menuModalPrice.textContent = item.price;
+  if (menuPayment) menuPayment.value = '';
+  menuModal.removeAttribute('hidden');
+}
+
+function closeMenuModal() {
+  if (!menuModal) return;
+  menuModal.setAttribute('hidden', '');
+  currentMenuItem = null;
+}
+
+menuButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const li = btn.closest('li');
+    if (!li) return;
+    const item = {
+      name: li.dataset.name || li.querySelector('span')?.textContent || 'Menu item',
+      price: li.dataset.price || '',
+      desc: li.dataset.desc || li.querySelector('p')?.textContent || ''
+    };
+    openMenuModal(item);
+  });
+});
+
+if (menuCloseBtn) menuCloseBtn.addEventListener('click', closeMenuModal);
+if (menuBackdrop) menuBackdrop.addEventListener('click', closeMenuModal);
+if (menuViewMore) menuViewMore.addEventListener('click', () => {
+  closeMenuModal();
+  document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' });
+});
+
+if (menuPayNow) {
+  menuPayNow.addEventListener('click', () => {
+    if (!currentMenuItem) return;
+    const paymentChoice = menuPayment?.value || '';
+    const lines = [
+      "Order Request - Jack's Hearth Kitchen",
+      '',
+      `Item: ${currentMenuItem.name}`,
+      `Price: ${currentMenuItem.price}`,
+      `Details: ${currentMenuItem.desc || 'N/A'}`,
+      `Payment: ${paymentChoice || 'N/A'}`,
+      '',
+      'Please send a payment link or M-Pesa STK push to confirm.'
+    ];
+    const msg = lines.join('\n');
+    const encoded = encodeURIComponent(msg);
+    const waUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encoded}`;
+    window.open(waUrl, '_blank');
+  });
+}
+
+document.addEventListener('keydown', evt => {
+  if (evt.key === 'Escape' && !menuModal?.hasAttribute('hidden')) {
+    closeMenuModal();
+  }
+});
