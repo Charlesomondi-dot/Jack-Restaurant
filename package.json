@@ -1,7 +1,7 @@
 {
   "name": "jack-restaurant",
   "version": "1.0.0",
-  "description": "Jack's Hearth Kitchen - Professional restaurant website",
+  "description": "uPTOWN EDDUE'S RESTAURANT - Professional restaurant website",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

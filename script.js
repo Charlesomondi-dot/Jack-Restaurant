@@ -107,7 +107,7 @@ if (form && formMessage) {
 
     // Compose WhatsApp reservation message
     const msgLines = [
-      "Reservation Request - Jack's Hearth Kitchen",
+      "Reservation Request - uPTOWN EDDUE'S RESTAURANT",
       '',
       `Name: ${formData.name}`,
       `Phone: ${formData.phone || 'N/A'}`,
@@ -153,7 +153,7 @@ if (form && formMessage) {
       }
 
       const payLines = [
-        "Payment Request - Jack's Hearth Kitchen",
+        "Payment Request - uPTOWN EDDUE'S RESTAURANT",
         '',
         `Name: ${formData.name}`,
         `Phone: ${formData.phone || 'N/A'}`,
@@ -218,7 +218,7 @@ if (menuPayNow) {
     if (!currentMenuItem) return;
     const paymentChoice = menuPayment?.value || '';
     const lines = [
-      "Order Request - Jack's Hearth Kitchen",
+      "Order Request - uPTOWN EDDUE'S RESTAURANT",
       '',
       `Item: ${currentMenuItem.name}`,
       `Price: ${currentMenuItem.price}`,

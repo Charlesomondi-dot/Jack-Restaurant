@@ -53,7 +53,7 @@
 
       // Construct WhatsApp message
       const msgLines = [
-        "Order Request - Jack's Hearth Kitchen",
+        "Order Request - uPTOWN EDDUE'S RESTAURANT",
         '',
         `Name: ${name}`,
         `Order: ${order}`,
