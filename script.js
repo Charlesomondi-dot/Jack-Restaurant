@@ -82,6 +82,10 @@ function validateForm(data) {
   return errors;
 }
 
+function getDeliveryAddressField() {
+  return document.getElementById('delivery-address');
+}
+
 if (form && formMessage) {
   form.addEventListener('submit', event => {
     event.preventDefault();
@@ -96,6 +100,7 @@ if (form && formMessage) {
       guests: form.guests.value,
       notes: form.notes.value,
       payment: form.payment.value,
+      deliveryAddress: form['delivery-address'].value,
     };
 
     const errors = validateForm(formData);
@@ -115,7 +120,10 @@ if (form && formMessage) {
       `Date: ${formData.date}`,
       `Time: ${formData.time}`,
       `Guests: ${formData.guests}`,
-      `Payment: ${formData.payment || 'N/A'}`,
+      `Delivery Address: ${formData.deliveryAddress || 'N/A'}`,
+      `Notes: ${formData.notes || 'N/A'}`,
+      '',
+      '📍 Please reply with a pinned location on WhatsApp for accurate delivery'A'}`,
       `Notes: ${formData.notes || 'N/A'}`
     ];
     const message = msgLines.join('\n');
@@ -139,6 +147,7 @@ if (form && formMessage) {
         phone: form.phone.value,
         email: form.email.value,
         date: form.date.value,
+        deliveryAddress: form['delivery-address'].value,
         time: form.time.value,
         guests: form.guests.value,
         notes: form.notes.value,
@@ -157,8 +166,10 @@ if (form && formMessage) {
         '',
         `Name: ${formData.name}`,
         `Phone: ${formData.phone || 'N/A'}`,
-        `Email: ${formData.email || 'N/A'}`,
-        `Date: ${formData.date}`,
+        `Delivery Address: ${formData.deliveryAddress || 'N/A'}`,
+        `Notes: ${formData.notes || 'N/A'}`,
+        '',
+        '📍 Please pin your exact location on WhatsApp for faster delivery.Date: ${formData.date}`,
         `Time: ${formData.time}`,
         `Guests: ${formData.guests}`,
         `Payment: ${formData.payment || 'N/A'}`,
