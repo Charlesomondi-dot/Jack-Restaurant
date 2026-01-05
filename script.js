@@ -123,8 +123,7 @@ if (form && formMessage) {
       `Delivery Address: ${formData.deliveryAddress || 'N/A'}`,
       `Notes: ${formData.notes || 'N/A'}`,
       '',
-      '📍 Please reply with a pinned location on WhatsApp for accurate delivery'A'}`,
-      `Notes: ${formData.notes || 'N/A'}`
+      '📍 Please reply with a pinned location on WhatsApp for accurate delivery'
     ];
     const message = msgLines.join('\n');
     const encoded = encodeURIComponent(message);
@@ -168,12 +167,10 @@ if (form && formMessage) {
         `Phone: ${formData.phone || 'N/A'}`,
         `Delivery Address: ${formData.deliveryAddress || 'N/A'}`,
         `Notes: ${formData.notes || 'N/A'}`,
-        '',
-        '📍 Please pin your exact location on WhatsApp for faster delivery.Date: ${formData.date}`,
+        `Date: ${formData.date}`,
         `Time: ${formData.time}`,
         `Guests: ${formData.guests}`,
         `Payment: ${formData.payment || 'N/A'}`,
-        `Notes: ${formData.notes || 'N/A'}`,
         '',
         'Please send a payment link or M-Pesa STK push to confirm.'
       ];
@@ -248,5 +245,83 @@ if (menuPayNow) {
 document.addEventListener('keydown', evt => {
   if (evt.key === 'Escape' && !menuModal?.hasAttribute('hidden')) {
     closeMenuModal();
+  }
+});
+
+// WhatsApp Modal Handler
+const whatsappModal = document.getElementById('whatsapp-modal');
+const whatsappCloseBtn = document.querySelector('.whatsapp-modal__close');
+const whatsappCloseBtnCancel = document.getElementById('whatsapp-modal-close-btn');
+const whatsappBackdrop = document.querySelector('.whatsapp-modal__backdrop');
+const whatsappForm = document.querySelector('.whatsapp-modal__form');
+const floatingWhatsappBtn = document.querySelector('.floating-whatsapp');
+
+function closeWhatsappModal() {
+  if (!whatsappModal) return;
+  whatsappModal.setAttribute('hidden', '');
+  if (whatsappForm) whatsappForm.reset();
+}
+
+function openWhatsappModal() {
+  if (!whatsappModal) return;
+  whatsappModal.removeAttribute('hidden');
+}
+
+if (whatsappCloseBtn) {
+  whatsappCloseBtn.addEventListener('click', closeWhatsappModal);
+}
+
+if (whatsappCloseBtnCancel) {
+  whatsappCloseBtnCancel.addEventListener('click', closeWhatsappModal);
+}
+
+if (whatsappBackdrop) {
+  whatsappBackdrop.addEventListener('click', closeWhatsappModal);
+}
+
+if (floatingWhatsappBtn) {
+  floatingWhatsappBtn.addEventListener('click', openWhatsappModal);
+}
+
+if (whatsappForm) {
+  whatsappForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const formData = {
+      name: whatsappForm.name.value,
+      order: whatsappForm.order.value,
+      email: whatsappForm.email.value,
+      guests: whatsappForm.guests.value,
+      deliveryAddress: whatsappForm['delivery-address'].value,
+    };
+
+    if (!formData.name.trim() || !formData.order.trim()) {
+      alert('Please fill in name and order fields.');
+      return;
+    }
+
+    const msgLines = [
+      "Order Request - uPTOWN EDDUE'S RESTAURANT",
+      '',
+      `Name: ${formData.name}`,
+      `Order: ${formData.order}`,
+      `Email: ${formData.email || 'N/A'}`,
+      `Number of Guests: ${formData.guests}`,
+      `Delivery Address: ${formData.deliveryAddress || 'N/A'}`,
+      '',
+      '📍 Please pin your exact location on WhatsApp for faster delivery.'
+    ];
+    const message = msgLines.join('\n');
+    const encoded = encodeURIComponent(message);
+    const waUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encoded}`;
+
+    window.open(waUrl, '_blank');
+    closeWhatsappModal();
+  });
+}
+
+// Escape key to close WhatsApp modal
+document.addEventListener('keydown', evt => {
+  if (evt.key === 'Escape' && !whatsappModal?.hasAttribute('hidden')) {
+    closeWhatsappModal();
   }
 });
