@@ -1,4 +1,4 @@
-const CACHE_NAME = 'jack-restaurant-v9';
+const CACHE_NAME = 'jack-restaurant-v10';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -36,10 +36,26 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event
 self.addEventListener('fetch', event => {
   // Skip cross-origin and non-GET requests
   if (event.request.method !== 'GET' || event.request.url.includes('chrome-extension')) {
+    return;
+  }
+
+  const isHTMLRequest = event.request.mode === 'navigate' || event.request.destination === 'document';
+
+  if (isHTMLRequest) {
+    // Network-first for HTML so users always get latest content
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          const respToCache = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, respToCache));
+          return response;
+        })
+        .catch(() => caches.match(event.request).then(resp => resp || caches.match('/index.html')))
+    );
     return;
   }
 
@@ -47,11 +63,11 @@ self.addEventListener('fetch', event => {
   urlNoQuery.search = '';
   const strippedRequest = new Request(urlNoQuery.toString(), { method: 'GET' });
 
+  // Cache-first for assets with query-stripping fallback
   event.respondWith(
     caches.match(event.request).then(response => {
       if (response) return response;
 
-      // Try cache without query string (handles ?v= cache-busting)
       return caches.match(strippedRequest).then(resp2 => {
         if (resp2) return resp2;
 
