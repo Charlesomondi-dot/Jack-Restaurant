@@ -9,7 +9,7 @@
     "prod": "node server.js"
   },
   "keywords": ["restaurant", "website"],
-  "author": "Jack's Hearth Kitchen",
+  "author": "Harns",
   "license": "MIT",
   "engines": {
     "node": "18.x"

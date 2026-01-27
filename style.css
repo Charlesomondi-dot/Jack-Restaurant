@@ -292,8 +292,10 @@ h1, h2, h3, h4 {
 .hero__image {
   min-height: clamp(280px, 50vw, 420px);
   border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(216,123,66,0.45), rgba(15,13,11,0.7)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80') center/cover;
-  background-color: #1a120b;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
   box-shadow: var(--shadow);
 }
 
